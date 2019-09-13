@@ -19,7 +19,7 @@ class LineItemsControllerTest < ActionDispatch::IntegrationTest
     assert_difference('LineItem.count') do
       post line_items_url, params: { product_id: products(:ruby).id }
     end
-
+    
     assert_redirected_to cart_path(assigns(:line_item).cart)
   end
 
