@@ -20,8 +20,14 @@ class ProductTest < ActiveSupport::TestCase
                           image_url: 'zzz.jpg')
     product.price = -1
     assert product.invalid?
+    assert_equal ['must be greater than or equal to 0.01'],
+                 product.errors[:price]
+
     product.price = 0
     assert product.invalid?
+    assert_equal ['must be greater than or equal to 0.01'],
+                 product.errors[:price]
+
     product.price = 1
     assert product.valid?
   end
@@ -34,9 +40,9 @@ class ProductTest < ActiveSupport::TestCase
   end
 
   test 'image url' do
-    ok = %w{fred.gif fred.jpg fred.png FRED.JPG FRRED.JPG
-            http://a.b.c./x/x/z/fred.gif}
-    bad = %w{fred.doc fred.gif/more fred.gif.more}
+    ok = %w[fred.gif fred.jpg fred.png FRED.JPG FRRED.JPG
+            http://a.b.c./x/x/z/fred.gif]
+    bad = %w[fred.doc fred.gif/more fred.gif.more]
 
     ok.each do |name|
       assert new_product(name).valid?, "#{name} shouldn't be invalid"
@@ -52,7 +58,6 @@ class ProductTest < ActiveSupport::TestCase
                           description: 'yyy',
                           price: 1,
                           image_url: 'fred.gif')
-    assert !product.save
+    assert_not product.save
   end
-
 end
