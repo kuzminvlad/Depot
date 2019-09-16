@@ -18,12 +18,13 @@ class Product < ApplicationRecord
   end
 
   private
-    def ensure_not_referenced_by_any_line_item
-      if line_items.empty?
-        return true
-      else
-        errors.add(:base, 'существуют товарные позиции')
-        return false
-      end
+
+  def ensure_not_referenced_by_any_line_item
+    if line_items.empty?
+      true
+    else
+      errors.add(:base, 'существуют товарные позиции')
+      false
     end
+  end
 end

@@ -1,6 +1,7 @@
+# frozen_string_literal: true
+
 class CombineItemsInCart < ActiveRecord::Migration[5.2]
-  def change
-  end
+  def change; end
 
   def up
     Cart.all.each do |cart|
