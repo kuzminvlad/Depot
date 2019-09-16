@@ -4,6 +4,7 @@ require 'test_helper'
 
 class OrderNotifierMailerTest < ActionMailer::TestCase
   test 'received' do
+    get login_url
     mail = OrderNotifierMailer.received(orders(:one))
     assert_equal 'Pragmatic Store Order Confirmation', mail.subject
     assert_equal ['dave@example.org'], mail.to
