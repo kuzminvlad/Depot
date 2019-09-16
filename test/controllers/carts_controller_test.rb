@@ -8,8 +8,8 @@ class CartsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should get index' do
-    # get carts_url
-    # assert_response :success
+    get carts_url
+    assert_response :success
   end
 
   test 'should get new' do
