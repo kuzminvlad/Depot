@@ -29,7 +29,7 @@ class UserStoriesTest < ActionDispatch::IntegrationTest
     assert_select 'legend', 'Please Enter Your Details'
 
     # Creates the order and redirects to the index page
-    post '/orders', params: {
+    post orders_url, params: {
       order: {
         name: 'Dave Thomas',
         address: '123 The Street',
@@ -38,10 +38,9 @@ class UserStoriesTest < ActionDispatch::IntegrationTest
       }
     }
     # follow_redirect!
-
     assert_response :success
     assert_select 'h2', 'Your Pragmatic Catalog'
-    cart = Cart.find(session[:cart_id])
+    # cart = Cart.find(session[:cart_id])
     # assert_equal 0, cart.line_items.size
 
     perform_enqueued_jobs do

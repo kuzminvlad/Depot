@@ -46,7 +46,7 @@ en:
 
   carts:
     cart:
-      title:        "Your Cart"
+      title:        "Your Pragmatic Catalog"
       empty:        "Empty cart"
       checkout:     "Checkout"
 
