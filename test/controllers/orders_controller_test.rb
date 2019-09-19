@@ -5,7 +5,7 @@ require 'test_helper'
 class OrdersControllerTest < ActionDispatch::IntegrationTest
   setup do
     @order = orders(:one)
-    @order.pay_type = "Check"
+    @order.pay_type = 'Check'
   end
 
   test 'should get index' do

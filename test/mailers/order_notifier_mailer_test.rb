@@ -3,7 +3,6 @@
 require 'test_helper'
 
 class OrderNotifierMailerTest < ActionMailer::TestCase
-
   test 'received' do
     mail = OrderNotifierMailer.received(orders(:one))
     assert_equal 'Pragmatic Store Order Confirmation', mail.subject
